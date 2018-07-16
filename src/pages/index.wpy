@@ -1,82 +1,261 @@
 <style lang="less">
-  .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  page {
+    height: 100%;
+    background-color: #323232;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+  .container {
+
+  }
+  .content {
+    width: 80%;
+    height: 80%;
+    margin-top: 20rpx;
+  }
+  .back-image {
+    width: 100%;
+    height: 75%;
+  }
+  .bottom-text {
+    height: 25%;
+    text-align: center;
+    background-color: white;
+  } 
+  .image {
+    width: 100%;
+    height: 100%;
+  }
+  .text {
+    padding-top: 45rpx;
+    color:#3e3e3e;
+    font-size: 40rpx;
+  }
+  .english {
+    padding-top: 20rpx;
+    width: 89%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #999999;
+    font-size: 30rpx;
+  }
+  .circle {
+    background-color:#26eab3;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 70rpx;
+    position: absolute;
+    top: 87%;
+  }
+  .stand {
+    background: white;
+    height: 50rpx;
+    position: absolute;
+    width: 3rpx;
+    left: 50rpx;
+    top: 25rpx;
+  }
+  .across {
+    background: white;
+    position: absolute;
+    width: 50rpx;
+    height: 3rpx;
+    left: 25rpx;
+    top: 50rpx;
+  }
+  .year {
+    position: absolute;
+    margin-left: 30rpx;
+    font-size: 50rpx;
+    margin-top: 25rpx;
+    color: #c7c1c3;
+  }
+  .month {
+    position: absolute;
+    margin-left: 30rpx;
+    margin-top: 94rpx;
+    color: #c4b2a1;
+  }
+  .day {
+    position:absolute;
+    margin-left:30rpx;
+    margin-top:145rpx;
+    font-size:60rpx;
+    color:#f2f2f3;
+  }
+  .day-tag {
+    position:absolute;
+    margin-left:110rpx;
+    margin-top:175rpx;
+    font-size:36rpx;
+    color:#f2f2f3;
   }
 
-  .userinfo-avatar {
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 50%;
+  .modal {
+    background-color:white;
+    // width: 2198rpx;
+    // height: 2198rpx;
+    position: absolute;
+    font-size: 25rpx;
+    border-radius: 70%;
+    // top:-60rpx;
   }
-
-  .userinfo-nickname {
-    color: #aaa;
+  // .transform {
+  //   transform: scale(0)
+  // }
+  .modal-content {
+    width: 26%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 210rpx;
+  }
+  .event {
+    margin-top:50rpx;
+  }
+  .line {
+    height: 2rpx;
+    background-color:#e4e4e4;
+    margin-top:15rpx;
+  }
+  .calendar {
+    margin-top:35rpx;
+  }
+  .calendar-icon {
+    width:22rpx;
+    height:22rpx;
+    position:absolute;
+    margin-top:12rpx;
+  }
+  .calendar-input {
+    margin-left: 40rpx;
+  }
+  .desc {
+    margin-top:35rpx;
+    width:100%;
+    height:150rpx;
+  }
+  .demo {
+    width:100%;
+    margin-top:25rpx;
+    position: relative;
+  }
+  .demo-image {
+    width:100%;
+    height: 250rpx;
+  }
+  .demo-text {
+    color:#fff4ef;
+    position:absolute;
+    top: 106rpx;
+    left: 40rpx;
+    font-size: 40rpx;
+  }
+  .save-btn {
+    width:60%;
+    color:#fcfeff;
+    background-color:#26eab3;
+    border-radius:45rpx;
+    font-size:30rpx;
+    margin-top: 120rpx;
+    line-height: 92rpx;
+    height: 90rpx;
+  }
+  .circle-modal {
+    background-color:#26eab3;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 70%;
+    position: relative;
+    top: 129rpx;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stand-modal {
+    background: white;
+    height: 50rpx;
+    position: absolute;
+    width: 3rpx;
+    left: 50%;
+    top: 26%;
+    transform:rotate(45deg);
+  }
+  .across-modal {
+    background: white;
+    position: absolute;
+    width: 50rpx;
+    height: 3rpx;
+    left: 26%;
+    top: 50%;
+    transform:rotate(45deg);
+  }
+  .phcolor {
+    color: #9e9e9e;
+  }
+  .cross-icon {
+    width:30rpx;
+    height:30rpx;
+    position:relative;
+    float:right;
+    top:-38rpx;
+    right:20rpx;
   }
 </style>
 <template>
   <view class="container">
-    <view class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+    <view class="content">
+      <view class="back-image">
+        <view class="year">{{year}}</view>
+        <view class="month">{{month}}</view>
+        <view class="day">{{day}}</view>
+        <view class="day-tag">{{dayTag}}</view>
+        <image class="image" mode="aspectFill" src="../images/back.jpg"></image>
+      </view>
+      <view class="bottom-text">
+        <view class="text">彼年豆蔻, 谁许谁地老天荒</view>
+        <view class="english">Years cardamom, who made who The end of life</view>
+      </view>
     </view>
-
-    <panel>
-      <view class="title" slot="title">测试数据绑定</view>
-
-      <text class="info">{{normalTitle}}</text>
-      <text class="info">{{setTimeoutTitle}}</text>
-      <text class="info">{{mixin}}</text>
-      <text class="info">{{mynum}}</text>
-      <text class="info">{{now}}</text>
-      <text class="info">{{num}}</text>
-      <text class="info">{{asyncNum}}</text>
-      <text class="info">{{sumNum}}</text>
-      <button @tap="plus('a')" size="mini">  +  </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">其它测试</view>
-      <button @tap="toast" size="mini">第三方组件</button>
-      <button @tap="communicate" size="mini">组件通信</button>
-      <button @tap="tap" size="mini">混合TAP事件</button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试并发网络请求</view>
-      <view>返回结果: <text>{{netrst}}</text></view>
-      <button @tap="request" size="mini"> 点我发起10个请求 </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件</view>
-
-      <text class="testcounter">计数组件1: </text>
-      <view class="counterview">
-        <counter1 @index-emit.user="counterEmit" />
+    <view class="circle" bindtap="add">
+      <view class="stand"></view>
+      <view class="across"></view>
+    </view>
+    <view class="modal {{transform}}" style="width:{{length}};height:{{length}}" animation="{{animationData}}"> 
+      <view class="modal-content">
+        <view class="title">
+          <input 
+            class="event" 
+            bindinput="handleTitleInput"
+            bindfocus="handleTitleFocus" 
+            bindblur="handleTitleBlur"
+            maxlength="30" 
+            placeholder-class="phcolor" 
+            placeholder="今天做了什么事"></input>
+          <image
+           class="cross-icon"
+          mode="aspectFill" 
+          src="../images/cross.png"
+          style="display:{{display}}"></image>  
+        </view>
+        <view class="line"></view>
+        <view class="calendar">
+          <image class="calendar-icon" mode="aspectFill" src="../images/calendar.png"></image>
+          <input class="calendar-input"></input>
+        </view>
+        <view class="line"></view>
+        <textarea  placeholder-class="phcolor" class='desc' placeholder="写下你的描述" />
+        <view class="line"></view>
+        <view class="demo">
+          <image class="demo-image" mode="aspectFill" src="../images/demo.jpg"></image>
+          <view class="demo-text">背景</view>
+        </view>
+        <button class="save-btn">保存</button>
+        <view class="circle-modal" bindtap="del">
+          <view class="stand-modal"></view>
+          <view class="across-modal"></view>
+        </view>
       </view>
-
-      <text class="testcounter">计数组件2: </text>
-
-      <view class="counterview">
-        <counter2 :num.sync="mynum"></counter2>
-      </view>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件Repeat</view>
-      <repeat for="" index="index" item="item" key="key">
-        <group :grouplist="item" :indexa="index"></group>
-      </repeat>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试列表</view>
-      <list></list>
-    </panel>
-
-    <toast />
+    </view>
   </view>
 </template>
 
@@ -107,7 +286,9 @@
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: '拾光记',
+      disableScroll: true,
+      navigationBarTextStyle: 'white'
     }
     components = {
       panel: Panel,
@@ -121,6 +302,16 @@
     mixins = [testMixin]
 
     data = {
+      year: '',
+      month: '',
+      day: '',
+      dayTag: '',
+      display: 'none',
+      transform: 'transform',
+      animationData: {},
+      length: '',
+      top: '',
+
       mynum: 20,
       userInfo: {
         nickName: '加载中...'
@@ -129,50 +320,6 @@
       setTimeoutTitle: '标题三秒后会被修改',
       count: 0,
       netrst: '',
-      groupList: [
-        {
-          id: 1,
-          name: '点击改变',
-          list: [
-            {
-              childid: '1.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: '点击改变',
-          list: [
-            {
-              childid: '2.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 3,
-          name: '点击改变',
-          list: [
-            {
-              childid: '3.1',
-              childname: '子项，点我改变'
-            }
-          ]
-        }
-      ]
     }
 
     computed = {
@@ -182,73 +329,65 @@
     }
 
     methods = {
-      plus () {
-        this.mynum++
-      },
-      toast () {
-        let promise = this.$invoke('toast', 'show', {
-          title: '自定义标题',
-          img: 'https://raw.githubusercontent.com/kiinlam/wetoast/master/images/star.png'
-        })
-
-        promise.then((d) => {
-          console.log('toast done')
-        })
-      },
-      tap () {
-        console.log('do noting from ' + this.$name)
-      },
-      communicate () {
-        console.log(this.$name + ' tap')
-
-        this.$invoke('counter2', 'minus', 45, 6)
-        this.$invoke('counter1', 'plus', 45, 6)
-
-        this.$broadcast('index-broadcast', 1, 3, 4)
-      },
-      request () {
-        let self = this
-        let i = 10
-        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
-        while (i--) {
-          wepy.request({
-            url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
-            success: function (d) {
-              self.netrst += d.data + '.'
-              self.$apply()
-            }
-          })
+      handleTitleInput (e) {
+        if (e.detail.value) {
+          this.display = 'block'
+        } else {
+          this.display = 'none'
         }
       },
-      counterEmit (...args) {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+      handleTitleFocus (e) {
+        if (e.detail.value) {
+          this.display = 'block'
+        } else {
+          this.display = 'none'
+        }
+      },
+      handleTitleBlur () {
+        this.display = 'none'
+      },
+      add () {
+        // this.transform = ''
+        this.animation.scale(1).step({ duration: 1000 })
+        this.setData({
+          animationData: this.animation.export()
+        })
+      },
+      del () {
+        this.animation.scale(0.01).step({ duration: 1000 })
+        this.setData({
+          animationData: this.animation.export()
+        })
       }
     }
 
-    events = {
-      'index-emit': (...args) => {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
-      }
-    }
-
-    onLoad() {
-      let self = this
-      this.$parent.getUserInfo(function (userInfo) {
-        if (userInfo) {
-          self.userInfo = userInfo
+    onLoad () {
+      // const self = this;
+      const animation = wx.createAnimation({
+        duration: 1000
+      })    
+      this.animation = animation
+      animation.scale(0.01).step(0)
+      
+      wx.getSystemInfo({
+        success: (res) => {
+          console.log(res.windowHeight)
+          const height = res.windowHeight * 0.87 + 50
+          const width = res.windowWidth / 2
+          const length = res.windowHeight * 0.87 * 2 + 50
+          this.length = length + 'px'
+          this.animationData = this.animation.export()
+          this.top = Math.sqrt(height * height + width * width)
+          console.log(this.top - height)
+        },
+        fail: (res) => {
+          
+        },
+        complete: (res) => {
+          
         }
-        self.normalTitle = '标题已被修改'
-
-        self.setTimeoutTitle = '标题三秒后会被修改'
-        setTimeout(() => {
-          self.setTimeoutTitle = '到三秒了'
-          self.$apply()
-        }, 3000)
-
-        self.$apply()
       })
+      console.log(1)
     }
   }
 </script>

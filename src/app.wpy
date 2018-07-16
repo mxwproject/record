@@ -26,7 +26,7 @@ export default class extends wepy.app {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      navigationBarBackgroundColor: '#323232',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     }
@@ -63,12 +63,12 @@ export default class extends wepy.app {
     if (this.globalData.userInfo) {
       return this.globalData.userInfo
     }
-    wepy.getUserInfo({
-      success (res) {
-        that.globalData.userInfo = res.userInfo
-        cb && cb(res.userInfo)
-      }
-    })
+    // wepy.getUserInfo({
+    //   success (res) {
+    //     that.globalData.userInfo = res.userInfo
+    //     cb && cb(res.userInfo)
+    //   }
+    // })
   }
 }
 </script>
